@@ -60,40 +60,14 @@ private fun set_value_at_pos(pos: Pair<Int, Int>, v: Boolean) {
 
 
 private fun get_possible_grid_neighbours(pos: Pair<Int, Int>): List<Pair<Int, Int>> {
-    val neighbours = mutableListOf<Pair<Int, Int>>()
-    val north = pos.first to pos.second - 1
-    if (pos_inside_map(north)) {
-        neighbours.add(north)
-    }
-    val south = pos.first to pos.second + 1
-    if (pos_inside_map(south)) {
-        neighbours.add(south)
-    }
-    val east = pos.first + 1 to pos.second
-    if (pos_inside_map(east)) {
-        neighbours.add(east)
-    }
-    val west = pos.first - 1 to pos.second
-    if (pos_inside_map(west)) {
-        neighbours.add(west)
-    }
-    val northEast = pos.first + 1 to pos.second - 1
-    if (pos_inside_map(northEast)) {
-        neighbours.add(northEast)
-    }
-    val northWest = pos.first - 1 to pos.second - 1
-    if (pos_inside_map(northWest)) {
-        neighbours.add(northWest)
-    }
-    val southEast = pos.first + 1 to pos.second + 1
-    if (pos_inside_map(southEast)) {
-        neighbours.add(southEast)
-    }
-    val southWest = pos.first - 1 to pos.second + 1
-    if (pos_inside_map(southWest)) {
-        neighbours.add(southWest)
-    }
-    return neighbours
+    return listOf(pos.first to pos.second - 1,
+        pos.first to pos.second + 1,
+        pos.first + 1 to pos.second,
+        pos.first - 1 to pos.second,
+        pos.first + 1 to pos.second - 1,
+        pos.first - 1 to pos.second - 1,
+        pos.first + 1 to pos.second + 1,
+        pos.first - 1 to pos.second + 1).filter { pos ->  pos_inside_map(pos)}
 }
 
 private fun build_grid(lines: List<String>) {
