@@ -1,12 +1,11 @@
 import java.io.File
 
 fun main() {
-    day1_part1()
-    day1_part2()
+    println(day1_part1(File(System.getProperty("user.dir"), "input/input_day1.txt").readLines()))
+    println(day1_part2(File(System.getProperty("user.dir"), "input/input_day1.txt").readLines()))
 }
 
-fun day1_part1() {
-    val lines = File(System.getProperty("user.dir"), "input/input_day1.txt").readLines()
+fun day1_part1(lines: List<String>): Int {
     val regex = Regex("(?<direction>[LR])(?<clicks>[0-9]+)")
 
     var pos = 50
@@ -30,11 +29,10 @@ fun day1_part1() {
             numZero += 1
         }
     }
-    println(numZero)
+    return numZero
 }
 
-fun day1_part2() {
-    val lines = File(System.getProperty("user.dir"), "input/input_day1.txt").readLines()
+fun day1_part2(lines: List<String>) : Int{
     val regex = Regex("(?<direction>[LR])(?<clicks>[0-9]+)")
 
     var pos = 50
@@ -62,7 +60,7 @@ fun day1_part2() {
                 pos += 100
             }
 
-         } else if (direction == "R") {
+        } else if (direction == "R") {
             var possible = 100 - pos
             while (clicks > possible) {
                 numZero += 1
@@ -78,7 +76,7 @@ fun day1_part2() {
         }
         startZero = pos == 0
     }
-    println(numZero)
+    return numZero
 }
 
 
